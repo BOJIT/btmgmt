@@ -31,6 +31,7 @@ Built with Python 3.7, Python 2 is untested.
 ## Usage:
 
     # Demonstrative only: see example scripts for more information
+
     import bluez_mgmt
 
     bluez_mgmt.command("command", "parameter1", "parameter2")
