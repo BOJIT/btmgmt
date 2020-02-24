@@ -19,16 +19,16 @@ https://git.kernel.org/pub/scm/bluetooth/bluez.git/tree/doc/mgmt-api.txt
 
     bluez_mgmt.command("command", "parameter1", "parameter2")
 
-    **# Variable number of arguments: arguments should be formatted as strings**
+    # Variable number of arguments: arguments should be formatted as strings
 
 ## Command Index:
 
 vailable commands:
 -------------------
-> select <index>                                    Select a different index
-> version                                           Get the MGMT Version
-> commands                                          List supported commands
-config                                            Show configuration info
+> `select <index>                                    Select a different index`
+> `version                                           Get the MGMT Version`
+> `commands                                          List supported commands`
+> `config                                            Show configuration info`
 info                                              Show controller info
 extinfo                                           Show extended controller info
 auto-power                                        Power all available features
