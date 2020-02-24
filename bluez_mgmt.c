@@ -4554,46 +4554,6 @@ static const struct bt_shell_opt opt = {
 	.help = help,
 };
 
-/*int main(int argc, char *argv[])
-{
-	printf("BTMGMT Python API:\n");
-
-	int status;
-
-	bt_shell_init(argc, argv, &opt);
-	bt_shell_set_menu(&main_menu);
-
-	mgmt = mgmt_new_default();
-	if (!mgmt) {
-		fprintf(stderr, "Unable to open mgmt_socket\n");
-		return EXIT_FAILURE;
-	}
-
-	if (getenv("MGMT_DEBUG"))
-		mgmt_set_debug(mgmt, mgmt_debug, "mgmt: ", NULL);
-
-	if (index_option)
-		set_index(index_option);
-
-	register_mgmt_callbacks(mgmt, mgmt_index);
-
-	bt_shell_attach(fileno(stdin));
-
-	uint8_t val = 1;
-	if (send_cmd(mgmt, MGMT_OP_SET_LE, 0, sizeof(val), &val, setting_rsp) == 0) {
-		printf("Could Not Set Mode");
-	}
-
-	bt_shell_cleanup();
-
-	mgmt_cancel_all(mgmt);
-	mgmt_unregister_all(mgmt);
-	mgmt_unref(mgmt);
-
-	return status;
-}*/
-
-
 static PyObject * bluez_mgmt_test(PyObject *self, PyObject *args)
 {	
 	int argc = 1;
@@ -4627,7 +4587,7 @@ static PyObject * bluez_mgmt_test(PyObject *self, PyObject *args)
 		printf("Could Not Set Mode");
 	}
 
-	//status = bt_shell_run();
+	status = bt_shell_run();
 
 	bt_shell_cleanup();
 
