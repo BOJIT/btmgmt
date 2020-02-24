@@ -37,54 +37,54 @@ https://git.kernel.org/pub/scm/bluetooth/bluez.git/tree/doc/mgmt-api.txt
 > `bondable <on/off>                                 Toggle bondable state`<br>
 > `linksec <on/off>                                  Toggle link level security`<br>
 > `ssp <on/off>                                      Toggle SSP mode`<br>
-> `sc <on/off/only>                                  Toogle SC support`<br>
-> `hs <on/off>                                       Toggle HS support`<br>
-> `le <on/off>                                       Toggle LE support`<br>
-> `advertising <on/off>                              Toggle LE advertising`<br>
-> `bredr <on/off>                                    Toggle BR/EDR support`<br>
-> `privacy <on/off>                                  Toggle privacy support`<br>
-> `class <major> <minor>                             Set device major/minor class`<br>
-> `disconnect [-t type] <remote address>             Disconnect device`<br>
-> `con                                               List connections`<br>
-> `find [-l|-b] [-L]                                 Discover nearby devices`<br>
-> `find-service [-u UUID] [-r RSSI_Threshold] [-l|-b] Discover nearby service`<br>
-> `stop-find [-l|-b]                                 Stop discovery`<br>
-> `name <name> [shortname]                           Set local name`<br>
-> `pair [-c cap] [-t type] <remote address>          Pair with a remote device`<br>
-> `cancelpair [-t type] <remote address>             Cancel pairing`<br>
-> `unpair [-t type] <remote address>                 Unpair device`<br>
-> `keys                                              Load Link Keys`<br>
-> `ltks                                              Load Long Term Keys`<br>
-> `irks [--local <index>] [--file <file path>]       Load Identity Resolving Keys`<br>
-> `block [-t type] <remote address>                  Block Device`<br>
-> `unblock [-t type] <remote address>                Unblock Device`<br>
-> `add-uuid <UUID> <service class hint>              Add UUID`<br>
-> `rm-uuid <UUID>                                    Remove UUID`<br>
-> `clr-uuids                                         Clear UUIDs`<br>
-> `local-oob                                         Local OOB data`<br>
-> `remote-oob [-t <addr_type>] [-r <rand192>] [-h <hash192>] [-R <rand256>] [-H <hash256>] <addr> Remote OOB data`<br>
-> `did <source>:<vendor>:<product>:<version>         Set Device ID`<br>
-> `static-addr <address>                             Set static address`<br>
-> `public-addr <address>                             Set public address`<br>
-> `ext-config <on/off>                               External configuration`<br>
-> `debug-keys <on/off>                               Toogle debug keys`<br>
-> `conn-info [-t type] <remote address>              Get connection information`<br>
-> `io-cap <cap>                                      Set IO Capability`<br>
-> `scan-params <interval> <window>                   Set Scan Parameters`<br>
-> `get-clock [address]                               Get Clock Information`<br>
-> `add-device [-a action] [-t type] <address>        Add Device`<br>
-> `del-device [-t type] <address>                    Remove Device`<br>
-> `clr-devices                                       Clear Devices`<br>
-> `bredr-oob                                         Local OOB data (BR/EDR)`<br>
-> `le-oob                                            Local OOB data (LE)`<br>
-> `advinfo                                           Show advertising features`<br>
-> `advsize [options] <instance_id>                   Show advertising size info`<br>
-> `add-adv [options] <instance_id>                   Add advertising instance`<br>
-> `rm-adv <instance_id>                              Remove advertising instance`<br>
-> `clr-adv                                           Clear advertising instances`<br>
-> `appearance <appearance>                           Set appearance`<br>
-> `version                                           Display version`<br>
-> `quit                                              Quit program`<br>
-> `exit                                              Quit program`<br>
-> `help                                              Display help about this program`<br>
-> `export                                            Print evironment variables`<br>
+> `sc <on/off/only>                                  Toogle SC support`<br>
+> `hs <on/off>                                       Toggle HS support`<br>
+> `le <on/off>                                       Toggle LE support`<br>
+> `advertising <on/off>                              Toggle LE advertising`<br>
+> `bredr <on/off>                                    Toggle BR/EDR support`<br>
+> `privacy <on/off>                                  Toggle privacy support`<br>
+> `class <major> <minor>                             Set device major/minor class`<br>
+> `disconnect [-t type] <remote address>             Disconnect device`<br>
+> `con                                               List connections`<br>
+> `find [-l|-b] [-L]                                 Discover nearby devices`<br>
+> `find-service [-u UUID] [-r RSSI_Threshold] [-l|-b] Discover nearby service`<br>
+> `stop-find [-l|-b]                                 Stop discovery`<br>
+> `name <name> [shortname]                           Set local name`<br>
+> `pair [-c cap] [-t type] <remote address>          Pair with a remote device`<br>
+> `cancelpair [-t type] <remote address>             Cancel pairing`<br>
+> `unpair [-t type] <remote address>                 Unpair device`<br>
+> `keys                                              Load Link Keys`<br>
+> `ltks                                              Load Long Term Keys`<br>
+> `irks [--local <index>] [--file <file path>]       Load Identity Resolving Keys`<br>
+> `block [-t type] <remote address>                  Block Device`<br>
+> `unblock [-t type] <remote address>                Unblock Device`<br>
+> `add-uuid <UUID> <service class hint>              Add UUID`<br>
+> `rm-uuid <UUID>                                    Remove UUID`<br>
+> `clr-uuids                                         Clear UUIDs`<br>
+> `local-oob                                         Local OOB data`<br>
+> `remote-oob [-t <addr_type>] [-r <rand192>] [-h <hash192>] [-R <rand256>] [-H <hash256>] <addr> Remote OOB data`<br>
+> `did <source>:<vendor>:<product>:<version>         Set Device ID`<br>
+> `static-addr <address>                             Set static address`<br>
+> `public-addr <address>                             Set public address`<br>
+> `ext-config <on/off>                               External configuration`<br>
+> `debug-keys <on/off>                               Toogle debug keys`<br>
+> `conn-info [-t type] <remote address>              Get connection information`<br>
+> `io-cap <cap>                                      Set IO Capability`<br>
+> `scan-params <interval> <window>                   Set Scan Parameters`<br>
+> `get-clock [address]                               Get Clock Information`<br>
+> `add-device [-a action] [-t type] <address>        Add Device`<br>
+> `del-device [-t type] <address>                    Remove Device`<br>
+> `clr-devices                                       Clear Devices`<br>
+> `bredr-oob                                         Local OOB data (BR/EDR)`<br>
+> `le-oob                                            Local OOB data (LE)`<br>
+> `advinfo                                           Show advertising features`<br>
+> `advsize [options] <instance_id>                   Show advertising size info`<br>
+> `add-adv [options] <instance_id>                   Add advertising instance`<br>
+> `rm-adv <instance_id>                              Remove advertising instance`<br>
+> `clr-adv                                           Clear advertising instances`<br>
+> `appearance <appearance>                           Set appearance`<br>
+> `version                                           Display version`<br>
+> `quit                                              Quit program`<br>
+> `exit                                              Quit program`<br>
+> `help                                              Display help about this program`<br>
+> `export                                            Print evironment variables`<br>
