@@ -4554,18 +4554,23 @@ static const struct bt_shell_opt opt = {
 	.help = help,
 };
 
-static PyObject * bluez_mgmt_test(PyObject *self, PyObject *args)
+static PyObject * bluez_mgmt_command(PyObject *self, PyObject *args)
 {	
-	int argc = 1;
-	char *argv[1] = {"bluez_mgmt"};
-	
-	printf("BTMGMT Python API:\n");
+	// Loop through the input argument and pass pointers to argv[]
+	Py_ssize_t args_len = PyTuple_Size(args);
+	char *argv[args_len + 1];
+	argv[0] = "bluez_mgmt";
+	for (uint8_t i = 0; i < args_len; i++) {
+		argv[i + 1] = PyUnicode_DATA(PyTuple_GetItem(args, i));
+	}
+	int argc = args_len + 1;
 
+	// Open management shell and pass function arguments as parameters
 	int status = 0;
-
 	bt_shell_init(argc, argv, &opt);
 	bt_shell_set_menu(&main_menu);
 
+	// Create HCI management socket
 	mgmt = mgmt_new_default();
 	if (!mgmt) {
 		fprintf(stderr, "Unable to open mgmt_socket\n");
@@ -4580,17 +4585,12 @@ static PyObject * bluez_mgmt_test(PyObject *self, PyObject *args)
 
 	register_mgmt_callbacks(mgmt, mgmt_index);
 
+	// Execute Command
 	bt_shell_attach(fileno(stdin));
-
-	uint8_t val = 1;
-	if (send_cmd(mgmt, MGMT_OP_SET_LE, 0, sizeof(val), &val, setting_rsp) == 0) {
-		printf("Could Not Set Mode");
-	}
-
+	update_prompt(mgmt_index);
 	status = bt_shell_run();
 
-	bt_shell_cleanup();
-
+	// Cleanup
 	mgmt_cancel_all(mgmt);
 	mgmt_unregister_all(mgmt);
 	mgmt_unref(mgmt);
@@ -4599,8 +4599,8 @@ static PyObject * bluez_mgmt_test(PyObject *self, PyObject *args)
 }
 
 static PyMethodDef bluez_mgmt_methods[] = {
-    {"test", (PyCFunction)bluez_mgmt_test, METH_VARARGS, "test function"},
-    {NULL, NULL, 0, NULL}
+	{"command", (PyCFunction)bluez_mgmt_command, METH_VARARGS, "mgmt-api command"},
+	{NULL, NULL, 0, NULL}
 };
 
 static struct PyModuleDef bluez_mgmt_definition = { 
@@ -4613,6 +4613,6 @@ static struct PyModuleDef bluez_mgmt_definition = {
 
 PyMODINIT_FUNC PyInit_bluez_mgmt(void)
 {
-  Py_Initialize();
-  return PyModule_Create(&bluez_mgmt_definition);
+	Py_Initialize();
+	return PyModule_Create(&bluez_mgmt_definition);
 }
