@@ -15,9 +15,10 @@ print("Initial Configuration:")
 
 bluez_mgmt.command("info")
 
-adapter_name = input("Enter Adapter Name:")
+adapter_name_long = input("Enter Long Adapter Name:")
+adapter_name_short = input("Enter Short Adapter Name:")
 
-if bluez_mgmt.command("name", adapter_name) != 0:
+if bluez_mgmt.command("name", adapter_name_long, adapter_name_short) != 0:
     sys.exit(RETURN_ERROR)
 
 if bluez_mgmt.command("info") != 0:
