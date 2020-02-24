@@ -1,5 +1,20 @@
-# Python Module which acts as a wrapper around the BlueZ management API:
-https://git.kernel.org/pub/scm/bluetooth/bluez.git/tree/doc/mgmt-api.txt
+# bluez_mgmt: a Python Wrapper for the BlueZ management API
+see https://git.kernel.org/pub/scm/bluetooth/bluez.git/tree/doc/mgmt-api.txt for details:
+
+### tested on:
+- Raspberry Pi 3B+
+- Raspberry Pi 4
+
+Built with Python 3.7, Python 2 is untested.
+
+## Dependencies:
+
+* *libbluetooth-dev* : the headers and source code for this extension are entirely contained
+                       within this repo, but the python module is dynamically linked against
+                       *lbluetooth.so* on the Linux machine.
+* *libreadline-dev* : the *lreadline.so* shared library is usually installed by default, but
+                      C header files are required to build this module from source.
+* *python3-distutils* : this is the standard tool for building CPython extensions on Linux.
 
 ## Build Process:
 
@@ -15,6 +30,7 @@ https://git.kernel.org/pub/scm/bluetooth/bluez.git/tree/doc/mgmt-api.txt
 
 ## Usage:
 
+    # Demonstrative only: see example scripts for more information
     import bluez_mgmt
 
     bluez_mgmt.command("command", "parameter1", "parameter2")
