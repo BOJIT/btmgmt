@@ -28,13 +28,6 @@ if bluez_mgmt.command("info") != 0:
 if bluez_mgmt.command("power", "off") != 0:
     sys.exit(RETURN_ERROR)
 
-# Most bluetooth adapters will return an error if you disable both LE and BR/EDR
-# modes simultaneously, so if unsure of the initial state of the peripheral,
-# enable both modes (Dual Mode) before disabling one.
-
-if bluez_mgmt.command("bredr", "on") != 0:
-    sys.exit(RETURN_ERROR)
-
 if bluez_mgmt.command("le", "on") != 0:
     sys.exit(RETURN_ERROR)
 
