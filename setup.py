@@ -14,8 +14,7 @@ bluez_mgmt = Extension('bluez_mgmt',
                                 'src/shared/shell.c',
                                 'src/shared/log.c',
                                 'src/uuid-helper.c'],
-                       include_dirs=['/usr/include/python3.7/',
-                                     './'],
+                       include_dirs=['./'],
                        libraries=["bluetooth", "readline"])
 
 setup(name = 'bluez_mgmt',
