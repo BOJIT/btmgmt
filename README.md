@@ -14,14 +14,16 @@ Built with Python 3.7, Python 2 is untested.
                        *lbluetooth.so* on the Linux machine.
 * *libreadline-dev* : the *lreadline.so* shared library is usually installed by default, but
                       C header files are required to build this module from source.
-* *python3-distutils* : this is the standard tool for building CPython extensions on Linux.
 
 ## Build Process:
 
     $ sudo apt-get install libbluetooth-dev libreadline-dev
 
     $ sudo pip3 install git+https://github.com/BOJIT/bluez_mgmt.git
-    
+
+    # most of the BTMGMT commands require root privileges, so the library should be
+    # installed to the root python environment.
+
 ## Usage:
 
     # Demonstrative only: see example scripts for more information
