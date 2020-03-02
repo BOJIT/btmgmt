@@ -18,16 +18,10 @@ Built with Python 3.7, Python 2 is untested.
 
 ## Build Process:
 
-    $ git clone https://github.com/BOJIT/bluez_mgmt
+    $ sudo apt-get install libbluetooth-dev libreadline-dev
 
-    $ sudo apt-get install $(cat dependencies.txt)
-
-    $ cd bluez_mgmt
-
-    $ sudo python3 setup.py build
-
-    $ sudo python3 setup.py install
-
+    $ sudo pip3 install git+https://github.com/BOJIT/bluez_mgmt.git
+    
 ## Usage:
 
     # Demonstrative only: see example scripts for more information

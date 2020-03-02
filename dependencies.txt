@@ -1,3 +1,2 @@
 libbluetooth-dev
 libreadline-dev
-python3-distutils
