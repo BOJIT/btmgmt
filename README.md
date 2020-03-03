@@ -34,6 +34,16 @@ Built with Python 3.7, Python 2 is untested.
 
     # Variable number of arguments: arguments should be formatted as strings
 
+## Permissions:
+
+If you do not want to run as root, simply set the capabilities of the process (in this case, Python) to have `CAP_NET_ADMIN`.
+
+    sudo setcap cap_net_admin+eip $(readlink -f $(which python3))
+
+You can verify that this is `OK` by running the above command with verify flag:
+
+    sudo setcap -v cap_net_admin+eip $(readlink -f $(which python3))
+
 ## Available Commands:
 
 > `select <index>                                    Select a different index`<br>
