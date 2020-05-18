@@ -19,7 +19,7 @@ btmgmt = setuptools.Extension('btmgmt',
                                        'src/bluez/src/shared/log.c',
                                        'src/bluez/src/uuid-helper.c'],
                               include_dirs=['src/bluez/'],
-                              define_macros=[('VERSION', VERSION)],
+                              define_macros=[('VERSION', '#' + VERSION)],
                               libraries=["bluetooth", "readline"]
                              )
 
