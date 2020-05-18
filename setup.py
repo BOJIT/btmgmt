@@ -41,6 +41,6 @@ setuptools.setup(
     python_requires='>=3.6',
     install_requires=[
         "platform_system=='linux'",
-    ]
+    ],
     ext_modules=[btmgmt]
 )
