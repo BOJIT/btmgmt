@@ -6,8 +6,8 @@ with open('README.md', "r") as fh:
     long_description = fh.read()
 
 
-btmgmt = setuptools.Extension('btmgmt_wrapper.c',
-                              sources=['src/btmgmt.c',
+btmgmt = setuptools.Extension('btmgmt',
+                              sources=['src/btmgmt_wrapper.c',
                                        'src/bluez/tools/btmgmt.c',
                                        'src/bluez/src/shared/mgmt.c',
                                        'src/bluez/src/shared/util.c',
