@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="btmgmt",
-    version="0.0.1",
+    version="0.0.2",
     author="James Bennion-Pedley",
     author_email="jamesbpjames@gmail.com",
     description="TODO",
