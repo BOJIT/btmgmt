@@ -1,0 +1,7 @@
+README.md
+setup.py
+btmgmt/__init__.py
+btmgmt.egg-info/PKG-INFO
+btmgmt.egg-info/SOURCES.txt
+btmgmt.egg-info/dependency_links.txt
+btmgmt.egg-info/top_level.txt
