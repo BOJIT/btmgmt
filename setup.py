@@ -1,13 +1,14 @@
 import setuptools
 
-VERSION = "v0.7.0"
+VERSION = "v0.8.0"
 
 with open('README.md', "r") as fh:
     long_description = fh.read()
 
 
-btmgmt = setuptools.Extension('btmgmt',
+btmgmt = setuptools.Extension('btmgmt_wrapper.c',
                               sources=['src/btmgmt.c',
+                                       'src/bluez/tools/btmgmt.c',
                                        'src/bluez/src/shared/mgmt.c',
                                        'src/bluez/src/shared/util.c',
                                        'src/bluez/src/shared/queue.c',
@@ -18,7 +19,7 @@ btmgmt = setuptools.Extension('btmgmt',
                                        'src/bluez/src/shared/shell.c',
                                        'src/bluez/src/shared/log.c',
                                        'src/bluez/src/uuid-helper.c'],
-                              include_dirs=['src/bluez/'],
+                              include_dirs=['src/', 'src/bluez/'],
                               define_macros=[('VERSION', '\"' + VERSION + '\"')],
                               libraries=["bluetooth", "readline"]
                              )
