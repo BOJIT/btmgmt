@@ -1,2 +1,4 @@
 .vscode/*
-dist/
+dist/*
+build/*
+btmgmt.egg-info/*
