@@ -1,4 +1,4 @@
-# bluez_mgmt: a Python Wrapper for the BlueZ management API
+# btmgmt: a Python Wrapper for the BlueZ management API
 see https://git.kernel.org/pub/scm/bluetooth/bluez.git/tree/doc/mgmt-api.txt for details:
 
 ### tested on:
@@ -19,7 +19,7 @@ Built with Python 3.7, Python 2 is untested.
 
     $ sudo apt-get install libbluetooth-dev libreadline-dev
 
-    $ sudo pip3 install git+https://github.com/BOJIT/bluez_mgmt.git
+    $ sudo pip3 install btmgmt
 
     # most of the BTMGMT commands require root privileges, so the library should be
     # installed to the root python environment.
@@ -28,9 +28,9 @@ Built with Python 3.7, Python 2 is untested.
 
     # Demonstrative only: see example scripts for more information
 
-    import bluez_mgmt
+    import btmgmt
 
-    bluez_mgmt.command("command", "parameter1", "parameter2")
+    btmgmt.command("command", "parameter1", "parameter2")
 
     # Variable number of arguments: arguments should be formatted as strings
 
