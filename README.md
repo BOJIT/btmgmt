@@ -15,7 +15,7 @@ Built with Python 3.7, Python 2 is untested. The package can be built with bdist
 * *libreadline-dev* : the *lreadline.so* shared library is usually installed by default, but
                       C header files are required to build this module from source.
 
-## Build Process:
+## Install Process:
 
     $ sudo apt-get install libbluetooth-dev libreadline-dev
 
