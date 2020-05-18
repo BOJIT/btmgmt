@@ -1,6 +1,6 @@
 import setuptools
 
-VERSION = "v0.6.0"
+VERSION = "v0.7.0"
 
 with open('README.md', "r") as fh:
     long_description = fh.read()
@@ -19,7 +19,7 @@ btmgmt = setuptools.Extension('btmgmt',
                                        'src/bluez/src/shared/log.c',
                                        'src/bluez/src/uuid-helper.c'],
                               include_dirs=['src/bluez/'],
-                              #define_macros=[('VERSION', '#' + VERSION)],
+                              define_macros=[('VERSION', '\"' + VERSION + '\"')],
                               libraries=["bluetooth", "readline"]
                              )
 

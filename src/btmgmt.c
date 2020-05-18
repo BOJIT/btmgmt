@@ -20,8 +20,6 @@
  */
 #include <Python.h>
 
-#define VERSION "v0.1.0"
-
 #ifdef HAVE_CONFIG_H
 	#include <config.h>
 #endif
