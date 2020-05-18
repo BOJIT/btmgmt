@@ -24,6 +24,8 @@
 
 #include <Python.h>
 
+#include <stdio.h> 
+
 #include "btmgmt.h"
 
 static PyObject * btmgmt_command(PyObject *self, PyObject *args)
@@ -45,7 +47,7 @@ static PyObject * btmgmt_command(PyObject *self, PyObject *args)
 	// Create HCI management socket
 	mgmt = mgmt_new_default();
 	if (!mgmt) {
-		fprintf(stderr, "Unable to open mgmt_socket\n");
+		fprintf(stderr, "Unable to open mgmt_socket!\n");
 		return PyLong_FromLong(EXIT_FAILURE);
 	}
 
@@ -78,7 +80,7 @@ static PyMethodDef btmgmt_methods[] = {
 static struct PyModuleDef btmgmt_definition = { 
 	PyModuleDef_HEAD_INIT,
 	"btmgmt",
-	"A simplified Python module that uses the bluetooth management API to reconfigure bluetooth adapter properties: see https://git.kernel.org/pub/scm/bluetooth/bluez.git/tree/doc/mgmt-api.txt",
+	"A Python wrapper for interfacing with the btmgmt API for BlueZ under Linux",
 	-1, 
 	btmgmt_methods
 };

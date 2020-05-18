@@ -1,11 +1,11 @@
 # btmgmt: a Python Wrapper for the BlueZ management API
-see https://git.kernel.org/pub/scm/bluetooth/bluez.git/tree/doc/mgmt-api.txt for details:
+see https://git.kernel.org/pub/scm/bluetooth/bluez.git/tree/doc/mgmt-api.txt for details on how to use the API:
 
 ### tested on:
 - Raspberry Pi 3B+
 - Raspberry Pi 4
 
-Built with Python 3.7, Python 2 is untested.
+Built with Python 3.7, Python 2 is untested. The package can be built with bdist-wheels, but is served as a source distribution, meaning the C wrapper is compiled locally when running `pip install`. This is slightly slower, but makes the library more portable.
 
 ## Dependencies:
 
@@ -32,7 +32,7 @@ Built with Python 3.7, Python 2 is untested.
 
     btmgmt.command("command", "parameter1", "parameter2")
 
-    # Variable number of arguments: arguments should be formatted as strings
+    # Variable number of arguments allowed depending on the command (see below).
 
 ## Permissions:
 

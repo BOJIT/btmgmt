@@ -25,6 +25,19 @@
 
 #include <stdlib.h>
 
+#include "src/shared/mgmt.h"
+#include "src/shared/shell.h"
+
+static struct mgmt *mgmt;
+
+static uint16_t mgmt_index;
+
+static const struct bt_shell_opt opt;
+
+static const struct bt_shell_menu main_menu;
+
+static const char *index_option;
+
 static void mgmt_debug(const char *str, void *user_data);
 
 static void set_index(const char *arg);
