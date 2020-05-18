@@ -4554,12 +4554,12 @@ static const struct bt_shell_opt opt = {
 	.help = help,
 };
 
-static PyObject * bluez_mgmt_command(PyObject *self, PyObject *args)
+static PyObject * btmgmt_command(PyObject *self, PyObject *args)
 {	
 	// Loop through the input argument and pass pointers to argv[]
 	Py_ssize_t args_len = PyTuple_Size(args);
 	char *argv[args_len + 1];
-	argv[0] = "bluez_mgmt";
+	argv[0] = "btmgmt";
 	for (uint8_t i = 0; i < args_len; i++) {
 		argv[i + 1] = PyUnicode_DATA(PyTuple_GetItem(args, i));
 	}
@@ -4598,21 +4598,21 @@ static PyObject * bluez_mgmt_command(PyObject *self, PyObject *args)
 	return PyLong_FromLong(status);
 }
 
-static PyMethodDef bluez_mgmt_methods[] = {
-	{"command", (PyCFunction)bluez_mgmt_command, METH_VARARGS, "mgmt-api command"},
+static PyMethodDef btmgmt_methods[] = {
+	{"command", (PyCFunction)btmgmt_command, METH_VARARGS, "mgmt-api command"},
 	{NULL, NULL, 0, NULL}
 };
 
-static struct PyModuleDef bluez_mgmt_definition = { 
+static struct PyModuleDef btmgmt_definition = { 
 	PyModuleDef_HEAD_INIT,
-	"bluez_mgmt",
+	"btmgmt",
 	"A simplified Python module that uses the bluetooth management API to reconfigure bluetooth adapter properties: see https://git.kernel.org/pub/scm/bluetooth/bluez.git/tree/doc/mgmt-api.txt",
 	-1, 
-	bluez_mgmt_methods
+	btmgmt_methods
 };
 
-PyMODINIT_FUNC PyInit_bluez_mgmt(void)
+PyMODINIT_FUNC PyInit_btmgmt(void)
 {
 	Py_Initialize();
-	return PyModule_Create(&bluez_mgmt_definition);
+	return PyModule_Create(&btmgmt_definition);
 }
