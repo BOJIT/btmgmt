@@ -1,7 +1,7 @@
 # Header files required for the btmgmt library:
 # (everything else is discarded during the build]
 
-include src/btmgmt.h
+include src/bluez/tools/btmgmt.c
 
 include src/bluez/lib/bluetooth.h
 include src/bluez/lib/hci_lib.h

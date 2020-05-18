@@ -8,7 +8,6 @@ with open('README.md', "r") as fh:
 
 btmgmt = setuptools.Extension('btmgmt',
                               sources=['src/btmgmt_wrapper.c',
-                                       'src/bluez/tools/btmgmt.c',
                                        'src/bluez/src/shared/mgmt.c',
                                        'src/bluez/src/shared/util.c',
                                        'src/bluez/src/shared/queue.c',
@@ -19,7 +18,7 @@ btmgmt = setuptools.Extension('btmgmt',
                                        'src/bluez/src/shared/shell.c',
                                        'src/bluez/src/shared/log.c',
                                        'src/bluez/src/uuid-helper.c'],
-                              include_dirs=['src/', 'src/bluez/'],
+                              include_dirs=['src/bluez/'],
                               define_macros=[('VERSION', '\"' + VERSION + '\"')],
                               libraries=["bluetooth", "readline"]
                              )

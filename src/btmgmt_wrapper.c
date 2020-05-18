@@ -24,9 +24,15 @@
 
 #include <Python.h>
 
-#include <stdio.h> 
+/*
+    Include C source for the btmgmt interface: as heinous as this looks, it
+    makes a lot of sense here, as all the functions in btmgmt.c are static,
+    and we want to put a very small wrapper around these functions. This way,
+    the original source file can be used, so any changes will update with the
+    rest of the submodule.
+*/
 
-#include "btmgmt.h"
+#include "tools/btmgmt.c"
 
 static PyObject * btmgmt_command(PyObject *self, PyObject *args)
 {	
