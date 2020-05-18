@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="btmgmt",
-    version="0.0.5",
+    version="0.0.6",
     author="James Bennion-Pedley",
     author_email="jamesbpjames@gmail.com",
     description="simple python wrapper for the BlueZ btmgmt tool on Linux",
@@ -15,8 +15,8 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: GPLv2 Licence",
-        "Operating System :: Linux",
+        "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+        "Operating System :: POSIX :: Linux",
     ],
     python_requires='>=3.6',
 )
