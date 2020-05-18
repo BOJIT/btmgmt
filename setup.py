@@ -5,18 +5,18 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="btmgmt",
-    version="0.0.4",
+    version="0.0.5",
     author="James Bennion-Pedley",
     author_email="jamesbpjames@gmail.com",
-    description="TODO",
+    description="simple python wrapper for the BlueZ btmgmt tool on Linux",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/BOJIT/btmgmt",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
+        "License :: GPLv2 Licence",
+        "Operating System :: Linux",
     ],
     python_requires='>=3.6',
 )
