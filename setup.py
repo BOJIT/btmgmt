@@ -1,5 +1,7 @@
 import setuptools
 
+VERSION = "v0.4.0"
+
 with open('README.md', "r") as fh:
     long_description = fh.read()
 
@@ -17,12 +19,13 @@ btmgmt = setuptools.Extension('btmgmt',
                                        'src/bluez/src/shared/log.c',
                                        'src/bluez/src/uuid-helper.c'],
                               include_dirs=['src/bluez/'],
+                              define_macros=[('VERSION', VERSION)],
                               libraries=["bluetooth", "readline"]
                              )
 
 setuptools.setup(
     name="btmgmt",
-    version="0.3.0",
+    version=VERSION,
     author="James Bennion-Pedley",
     author_email="jamesbpjames@gmail.com",
     description="simple python wrapper for the BlueZ btmgmt tool on Linux",
