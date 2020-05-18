@@ -1,6 +1,6 @@
 import setuptools
 
-VERSION = "v0.9.5"
+VERSION = "v1.0.0"
 
 with open('README.md', "r") as fh:
     long_description = fh.read()
@@ -39,8 +39,5 @@ setuptools.setup(
         "Operating System :: POSIX :: Linux",
     ],
     python_requires='>=3.6',
-    install_requires=[
-        "platform_system=='Linux'",
-    ],
     ext_modules=[btmgmt]
 )
