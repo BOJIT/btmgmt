@@ -9,6 +9,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@master
+    - name: Checkout submodules
+      uses: textbook/git-checkout-submodule-action@master
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
       with:
@@ -32,6 +34,7 @@ jobs:
       with:
         password: ${{ secrets.pypi_password }}
     - name: Publish distribution 📦 to Test PyPI
+      if: startsWith(github.event.ref, 'refs/tags') != true
       uses: pypa/gh-action-pypi-publish@master
       with:
         password: ${{ secrets.test_pypi_password }}

@@ -5,24 +5,24 @@ with open('README.md', "r") as fh:
 
 
 btmgmt = setuptools.Extension('btmgmt',
-                              sources=['btmgmt/btmgmt.c',
-                                       'btmgmt/src/shared/mgmt.c',
-                                       'btmgmt/src/shared/util.c',
-                                       'btmgmt/src/shared/queue.c',
-                                       'btmgmt/src/shared/mainloop.c',
-                                       'btmgmt/src/shared/io-mainloop.c',
-                                       'btmgmt/src/shared/timeout-mainloop.c',
-                                       'btmgmt/src/shared/mainloop-notify.c',
-                                       'btmgmt/src/shared/shell.c',
-                                       'btmgmt/src/shared/log.c',
-                                       'btmgmt/src/uuid-helper.c'],
-                              include_dirs=['btmgmt/'],
+                              sources=['src/btmgmt.c',
+                                       'src/bluez/src/shared/mgmt.c',
+                                       'src/bluez/src/shared/util.c',
+                                       'src/bluez/src/shared/queue.c',
+                                       'src/bluez/src/shared/mainloop.c',
+                                       'src/bluez/src/shared/io-mainloop.c',
+                                       'src/bluez/src/shared/timeout-mainloop.c',
+                                       'src/bluez/src/shared/mainloop-notify.c',
+                                       'src/bluez/src/shared/shell.c',
+                                       'src/bluez/src/shared/log.c',
+                                       'src/bluez/src/uuid-helper.c'],
+                              include_dirs=['src/bluez/'],
                               libraries=["bluetooth", "readline"]
                              )
 
 setuptools.setup(
     name="btmgmt",
-    version="0.2.0",
+    version="0.3.0",
     author="James Bennion-Pedley",
     author_email="jamesbpjames@gmail.com",
     description="simple python wrapper for the BlueZ btmgmt tool on Linux",

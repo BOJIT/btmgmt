@@ -1,21 +1,21 @@
 # Header files required for the btmgmt library:
 # (everything else is discarded during the build]
 
-include btmgmt/lib/bluetooth.h
-include btmgmt/lib/hci_lib.h
-include btmgmt/lib/hci.h
-include btmgmt/lib/mgmt.h
-include btmgmt/lib/sdp_lib.h
-include btmgmt/lib/sdp.h
-include btmgmt/lib/uuid.h
+include src/bluez/lib/bluetooth.h
+include src/bluez/lib/hci_lib.h
+include src/bluez/lib/hci.h
+include src/bluez/lib/mgmt.h
+include src/bluez/lib/sdp_lib.h
+include src/bluez/lib/sdp.h
+include src/bluez/lib/uuid.h
 
-include btmgmt/src/uuid-helper.h
-include btmgmt/src/shared/io.h
-include btmgmt/src/shared/log.h
-include btmgmt/src/shared/mainloop-notify.h
-include btmgmt/src/shared/mainloop.h
-include btmgmt/src/shared/mgmt.h
-include btmgmt/src/shared/queue.h
-include btmgmt/src/shared/shell.h
-include btmgmt/src/shared/timeout.h
-include btmgmt/src/shared/util.h
+include src/bluez/src/uuid-helper.h
+include src/bluez/src/shared/io.h
+include src/bluez/src/shared/log.h
+include src/bluez/src/shared/mainloop-notify.h
+include src/bluez/src/shared/mainloop.h
+include src/bluez/src/shared/mgmt.h
+include src/bluez/src/shared/queue.h
+include src/bluez/src/shared/shell.h
+include src/bluez/src/shared/timeout.h
+include src/bluez/src/shared/util.h
