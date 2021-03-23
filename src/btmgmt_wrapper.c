@@ -35,7 +35,7 @@
 #include "tools/btmgmt.c"
 
 static PyObject * btmgmt_command(PyObject *self, PyObject *args)
-{	
+{
 	// Loop through the input argument and pass pointers to argv[]
 	Py_ssize_t args_len = PyTuple_Size(args);
 	char *argv[args_len + 1];
@@ -78,8 +78,25 @@ static PyObject * btmgmt_command(PyObject *self, PyObject *args)
 	return PyLong_FromLong(status);
 }
 
+static PyObject * btmgmt_command_str(PyObject *self, PyObject *args)
+{
+	// Redirect stdout to memory stream
+
+	// Call underlying btmgmt command function
+	PyObject* status = btmgmt_command(self, args);
+
+	// Return stdout to original descriptor
+	char buf[] = "hello world!!!";
+
+	// Build returned tuple
+	PyObject* str = PyUnicode_FromStringAndSize(buf, sizeof(buf));
+
+	return PyTuple_Pack(2, status, str);
+}
+
 static PyMethodDef btmgmt_methods[] = {
 	{"command", (PyCFunction)btmgmt_command, METH_VARARGS, "mgmt-api command"},
+	{"command_str", (PyCFunction)btmgmt_command_str, METH_VARARGS, "mgmt-api command with returned string"},
 	{NULL, NULL, 0, NULL}
 };
 
