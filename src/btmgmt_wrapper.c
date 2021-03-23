@@ -96,31 +96,30 @@ static PyObject * btmgmt_command_str(PyObject *self, PyObject *args)
 	}
 	
 	dup2(buf_pipe[1], STDOUT_FILENO);
+	close(buf_pipe[1]);
 
 	// Call underlying btmgmt command function
 	PyObject* status = btmgmt_command(self, args);
-
-	// Flush stdout and close write-end of pipe
+	
+	// Return stdout to original descriptor
 	fflush(stdout);
-	close(buf_pipe[1]);
+	dup2(stdout_copy, STDOUT_FILENO);
+	close(stdout_copy);
 
 	// Copy data to memstream and close read-end of pipe
 	FILE* mem_stdout = open_memstream(&buf, &buf_len);
 	FILE* pipe_stdout = fdopen(buf_pipe[0], "r");
 
-	// int c;
-	// while((c = fgetc(pipe_stdout)) != EOF) {
+	int c;
+	while((c = fgetc(pipe_stdout)) != EOF) {
+		fputc(c, mem_stdout);
+	}
+	// for(int i = 0; i < 10; i++) {
+	// 	c = fgetc(pipe_stdout);
 	// 	fputc(c, mem_stdout);
 	// }
-	for(int i = 0; i < 10; i++) {
-		fputc(i + 65, mem_stdout);
-	}
 	fclose(mem_stdout);
 	fclose(pipe_stdout);
-
-	// Return stdout to original descriptor
-	dup2(stdout_copy, STDOUT_FILENO);
-	close(stdout_copy);
 
 	// Build returned tuple and free memstream
 	PyObject* str = PyUnicode_FromStringAndSize(buf, buf_len);
