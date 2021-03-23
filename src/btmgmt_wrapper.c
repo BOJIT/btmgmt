@@ -22,6 +22,8 @@
     new library features should be implemented here.
 */
 
+#include <stdio.h>
+#include <unistd.h>
 #include <Python.h>
 
 /*
@@ -80,16 +82,49 @@ static PyObject * btmgmt_command(PyObject *self, PyObject *args)
 
 static PyObject * btmgmt_command_str(PyObject *self, PyObject *args)
 {
-	// Redirect stdout to memory stream
+	char* buf;
+	size_t buf_len;
+	int buf_pipe[2];
+
+	// Backup stdout/stderr and flush buffer
+	int stdout_copy = dup(STDOUT_FILENO);
+	fflush(stdout);
+
+	// Redirect stdout/stderr to pipe
+	if(pipe(buf_pipe) != 0) {
+		exit(1);
+	}
+	
+	dup2(buf_pipe[1], STDOUT_FILENO);
 
 	// Call underlying btmgmt command function
 	PyObject* status = btmgmt_command(self, args);
 
-	// Return stdout to original descriptor
-	char buf[] = "hello world!!!";
+	// Flush stdout and close write-end of pipe
+	fflush(stdout);
+	close(buf_pipe[1]);
 
-	// Build returned tuple
-	PyObject* str = PyUnicode_FromStringAndSize(buf, sizeof(buf));
+	// Copy data to memstream and close read-end of pipe
+	FILE* mem_stdout = open_memstream(&buf, &buf_len);
+	FILE* pipe_stdout = fdopen(buf_pipe[0], "r");
+
+	// int c;
+	// while((c = fgetc(pipe_stdout)) != EOF) {
+	// 	fputc(c, mem_stdout);
+	// }
+	for(int i = 0; i < 10; i++) {
+		fputc(i + 65, mem_stdout);
+	}
+	fclose(mem_stdout);
+	fclose(pipe_stdout);
+
+	// Return stdout to original descriptor
+	dup2(stdout_copy, STDOUT_FILENO);
+	close(stdout_copy);
+
+	// Build returned tuple and free memstream
+	PyObject* str = PyUnicode_FromStringAndSize(buf, buf_len);
+	free(buf);
 
 	return PyTuple_Pack(2, status, str);
 }
