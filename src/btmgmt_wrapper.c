@@ -88,7 +88,9 @@ static PyObject * btmgmt_command_str(PyObject *self, PyObject *args)
 
 	// Backup stdout/stderr and flush buffer
 	int stdout_copy = dup(STDOUT_FILENO);
+	int stderr_copy = dup(STDERR_FILENO);
 	fflush(stdout);
+	fflush(stderr);
 
 	// Redirect stdout/stderr to pipe
 	if(pipe(buf_pipe) != 0) {
@@ -96,15 +98,19 @@ static PyObject * btmgmt_command_str(PyObject *self, PyObject *args)
 	}
 	
 	dup2(buf_pipe[1], STDOUT_FILENO);
+	dup2(buf_pipe[1], STDERR_FILENO);
 	close(buf_pipe[1]);
 
 	// Call underlying btmgmt command function
 	PyObject* status = btmgmt_command(self, args);
 	
-	// Return stdout to original descriptor
+	// Return stdout/stderr to original descriptor
 	fflush(stdout);
+	fflush(stderr);
 	dup2(stdout_copy, STDOUT_FILENO);
+	dup2(stderr_copy, STDERR_FILENO);
 	close(stdout_copy);
+	close(stderr_copy);
 
 	// Copy data to memstream and close read-end of pipe
 	FILE* mem_stdout = open_memstream(&buf, &buf_len);
@@ -114,10 +120,6 @@ static PyObject * btmgmt_command_str(PyObject *self, PyObject *args)
 	while((c = fgetc(pipe_stdout)) != EOF) {
 		fputc(c, mem_stdout);
 	}
-	// for(int i = 0; i < 10; i++) {
-	// 	c = fgetc(pipe_stdout);
-	// 	fputc(c, mem_stdout);
-	// }
 	fclose(mem_stdout);
 	fclose(pipe_stdout);
 
