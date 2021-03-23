@@ -26,13 +26,29 @@ Built with Python 3.7, Python 2 is untested. The package can be built with bdist
 
 ## Usage:
 
+```python
+
     # Demonstrative only: see example scripts for more information
 
     import btmgmt
 
-    btmgmt.command("command", "parameter1", "parameter2")
+    # Run command and get exit code: any output is printed to stdout
+    exit_code = btmgmt.command("command", "parameter1", "parameter2")
 
-    # Variable number of arguments allowed depending on the command (see below).
+    # Run command and get exit code + stdout in a tuple
+    response = btmgmt.command_str("command", "parameter1", "parameter2")
+
+    response = (exit_code, stdout_string)
+
+    # Variable number of arguments allowed depending on the command e.g:
+
+    btmgmt.command("power", "on")
+    btmgmt.command("help")
+    btmgmt.command("scan-params")
+    # etc...
+
+
+```
 
 ## Permissions:
 
