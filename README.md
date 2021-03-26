@@ -23,6 +23,16 @@ Built with Python 3.7, Python 2 is untested. The package can be built with bdist
 
     # most of the BTMGMT commands require root privileges, so the library should be
     # installed to the root python environment.
+    
+## Building from Source:
+
+Clone the repository, then `cd` into the root of the repo.
+
+Install with:
+
+    $ sudo python3 setup.py install
+    
+The package can be uninstalled as normal with `pip`.
 
 ## Usage:
 
